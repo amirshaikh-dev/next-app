@@ -57,6 +57,24 @@ function App() {
               )}
             />
           </Grid>
+          <Grid item xs={6}>
+            <Controller
+              name="lastName"
+              control={control}
+              defaultValue=""
+              rules={{ required: 'Last name is required' }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Last Name"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.lastName}
+                  helperText={errors.lastName ? errors.lastName.message : ''}
+                />
+              )}
+            />
+          </Grid>
           <Grid item xs={12}>
             <Controller
               name="email"
@@ -91,26 +109,4 @@ function App() {
 }
 
 export default App;
-
-// "use client"
-// import { useForm, SubmitHandler } from "react-hook-form"
-
-// interface IFormInput {
-//   firstName: string
-//   lastName: string
-//   age: number
-// }
-
-// export default function App() {
-//   const { register, handleSubmit } = useForm<IFormInput>()
-//   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input {...register("firstName", { required: 'First Name is required', maxLength: 20 })} placeholder="Name"/>
-//       <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-//       <input type="number" {...register("age", { min: 18, max: 99 })} />
-//       <input type="submit" />
-//     </form>
-//   )
-// }
+ 
